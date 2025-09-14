@@ -1,14 +1,32 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+    const navigate = useNavigate(); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login form submitted:", { email, password });
-    // TODO: connect to backend auth in next steps
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+      if (data.token) {
+        localStorage.setItem('token', data.token); // Save token
+        console.log('Login successful!');
+        navigate('/'); // Redirect to home page on success
+      } else {
+        console.error('Login failed:', data.msg);
+        // TODO: Show an error message to the user
+      }
+    } catch (err) {
+      console.error('An error occurred:', err);
+    }
   };
 
   return (
