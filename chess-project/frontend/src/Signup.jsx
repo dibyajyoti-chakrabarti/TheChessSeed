@@ -30,17 +30,16 @@ function Signup() {
   };
 
   return (
-    <div className="h-[100vh] w-[100vw] bg-black flex justify-center items-center">
-      <div className="h-[400px] w-[500px] bg-white flex flex-col justify-center items-center gap-[50px]">
+      <div className="h-[89vh] w-[100vw] flex flex-col justify-center items-center gap-[50px] text-white">
         <h2 className="text-4xl font-extrabold">Sign Up</h2>
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-center gap-2"
         >
-          <label className="text-2xl font-bold">
-            Username:
+          <label className="text-2xl font-bold flex flex-col">
+            Username
             <input
-              className="border-solid border-2"
+              className="default-input"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -48,10 +47,10 @@ function Signup() {
             />
           </label>
 
-          <label className="text-2xl font-bold">
-            Email:
+          <label className="text-2xl font-bold flex flex-col">
+            Email
             <input
-              className="border-solid border-2"
+              className="default-input"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -59,10 +58,10 @@ function Signup() {
             />
           </label>
 
-          <label className="text-2xl font-bold">
-            Password:
+          <label className="text-2xl font-bold flex flex-col">
+            Password
             <input
-              className="border-solid border-2"
+              className="default-input"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -70,7 +69,7 @@ function Signup() {
             />
           </label>
 
-          <button type="submit" className="default-btn">
+          <button type="submit" className="default-btn w-40">
             Sign Up
           </button>
         </form>
@@ -82,7 +81,7 @@ function Signup() {
           </Link>
         </p>
       </div>
-    </div>
+    
   );
 }
 
