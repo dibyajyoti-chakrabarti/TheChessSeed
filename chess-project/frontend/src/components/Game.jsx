@@ -1,21 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Chessboard } from 'react-chessboard';
+import { Chess } from 'chess.js';
 
 function Game() {
+  const [game, setGame] = useState(new Chess());
+
+  function onDrop(sourceSquare, targetSquare) {
+    const gameCopy = new Chess(game.fen());
+    const move = gameCopy.move({
+      from: sourceSquare,
+      to: targetSquare,
+      promotion: 'q',
+    });
+
+    if (move === null) {
+      return false; // illegal move
+    }
+    
+    setGame(gameCopy); // update game state
+    return true;
+  }
+
   return (
-    <div className="flex justify-center items-center h-[89vh]">
-      <div>
-        <h1 className="text-4xl font-bold text-center text-white my-8">
-          Chess Game vs AI
-        </h1>
-        
-        {/*
-          This div will act as a container for our board.
-          The w-[400px] or similar width class is important to give the board a size.
-        */}
-        <div className="w-[400px] h-[400px]">
-          <Chessboard id="BasicChessboard" />
-        </div>
+    <div className="flex justify-center items-center h-[calc(100vh-64px)]">
+      <div className="w-[400px] h-[400px] md:w-[500px] md:h-[500px]">
+        <Chessboard
+          position={game.fen()}
+          onPieceDrop={onDrop}
+        />
       </div>
     </div>
   );
