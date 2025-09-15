@@ -4,6 +4,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Game from "./components/Game"
 
 function App() {
   return (
@@ -14,6 +16,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route 
+            path="/play" 
+            element={
+              <ProtectedRoute>
+                <Game />
+              </ProtectedRoute>
+            } 
+          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

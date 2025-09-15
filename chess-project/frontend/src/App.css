@@ -1,6 +1,6 @@
 @import "tailwindcss";
 .default-btn{
-    @apply border-solid border-black border-7 hover:cursor-pointer p-2 bg-white text-black font-extrabold rounded-4xl hover:scale-110;
+    @apply bg-white text-black font-extrabold rounded-4xl hover:scale-110 pt-2 pb-2;
 }
 body{
     @apply bg-gray-800;
