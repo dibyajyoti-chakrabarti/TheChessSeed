@@ -17,10 +17,6 @@ function Home() {
         >
           Play vs AI
         </button>
-        <div>
-          <Link className="default-btn" to="/login">Login</Link>{" "}
-          <Link className="default-btn" to="/signup">Signup</Link>
-        </div>
       </div>
     </div>
   );

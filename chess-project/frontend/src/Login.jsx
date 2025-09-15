@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
     const navigate = useNavigate(); 
+    const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +18,8 @@ function Login() {
       });
 
       const data = await res.json();
-      if (data.token) {
+       if (data.token && data.user) {
+        login(data.user, data.token);
         localStorage.setItem('token', data.token); // Save token
         console.log('Login successful!');
         navigate('/'); // Redirect to home page on success
