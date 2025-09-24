@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Game from "./components/Game";
 import MultiplayerGame from "./components/MultiplayerGame";
+import Multiplayer from "./components/Multiplayer";
 
 function App() {
   return (
@@ -29,6 +30,15 @@ function App() {
                 </ProtectedRoute>
               } 
             />
+            <Route 
+              path="/multiplayer"
+              element={
+                <ProtectedRoute>
+                  <Multiplayer />
+                </ProtectedRoute>
+              }
+            />
+
             <Route 
               path="/game/:gameId"
               element={

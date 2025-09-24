@@ -79,11 +79,19 @@ function MultiplayerGame() {
 
   return (
     <div className="flex flex-col justify-center items-center h-[calc(100vh-64px)]">
+      {/* --- FIX: Moved Game ID outside the conditional block --- */}
+      <div className="text-center mb-4">
+        <h2 className="text-white text-lg">Game ID</h2>
+        <p className="text-green-400 text-2xl font-mono bg-gray-900 px-4 py-2 rounded-md">
+          {gameId}
+        </p>
+      </div>
+
       {playerColor ? (
         <>
-          <h2 className="text-white text-2xl mb-4">
-            Game ID: {gameId} | You are: {playerColor === 'w' ? 'White' : 'Black'}
-          </h2>
+          <h3 className="text-white text-xl mb-2">
+            You are playing as {playerColor === 'w' ? 'White' : 'Black'}
+          </h3>
           <div className="w-[400px] h-[400px] md:w-[500px] md:h-[500px]">
             <Chessboard
               position={fen}
@@ -93,7 +101,10 @@ function MultiplayerGame() {
           </div>
         </>
       ) : (
-        <h2 className="text-white text-2xl mb-4">Waiting for opponent to join...</h2>
+        <div className="text-center mt-4">
+          <h2 className="text-white text-2xl">Waiting for opponent...</h2>
+          <p className="text-gray-400 mt-2">Share the Game ID above with a friend.</p>
+        </div>
       )}
     </div>
   );
