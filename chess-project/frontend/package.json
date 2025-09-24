@@ -18,6 +18,7 @@
     "react-dnd-touch-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.9.1",
+    "socket.io-client": "^4.8.1",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
